@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Spatie\Permission\Traits\HasRoles;
+ use Illuminate\Http\Request;
+ use Spatie\Permission\Models\Role;
+ use Spatie\Permission\Models\Permission;
+ use \App\User;
+ 
 
 class HomeController extends Controller
 {
@@ -24,7 +27,33 @@ class HomeController extends Controller
      */
     public function index()
     {
-        Role::create(['name'=>'writer']);
+        //Role::create(['name'=>'writer']);
+        // $permission= Permission::create(['name'=>'edit Post']);
+        //$role=Role::findById(1);
+        // $permission=Permission::findById(2);
+
+        //$role->givePermissionTo($permission);
+        // $permission->removeRole($role);
+        // $role->revokePermissionTo($permission);
+
+
+
+
+            //auth()->user()->givePermissionTo('edit Post');
+            //auth()->user()->assignRole('writer');
+            //return auth()->user()->permissions;
+           // return auth()->user()->getDirectpermissions();
+            //return auth()->user()->getPermissionsViaRoles();
+            //return auth()->user()->getAllPermissions();
+
+            $user = User::role('writer')->get();
+            return $user;
+             return User::role('writer')->get();
+        
+
+            // $permission=Permission::findById(1);
+            // $role=Role::findById(1);
+            // $role->givePermissionTo($permission);
         return view('home');
     }
 }
