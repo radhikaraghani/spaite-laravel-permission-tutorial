@@ -46,9 +46,11 @@ class HomeController extends Controller
             //return auth()->user()->getPermissionsViaRoles();
             //return auth()->user()->getAllPermissions();
 
-            $user = User::role('writer')->get();
-            return $user;
-             return User::role('writer')->get();
+           // $user = User::role('writer')->get();
+           // return $user;
+
+           return auth()->user()->revokePermissionTo('edit Post');
+            
         
 
             // $permission=Permission::findById(1);
