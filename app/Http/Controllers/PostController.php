@@ -14,8 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('_post')->get();
-        return view('postlist');
+        $postes = DB::table('_post')->get();
+        return view('postlist',compact('postes'));
     }
 
     /**
@@ -25,8 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $posts=DB::table('_post')->insert(['title'=>$request->post,'decs'=>$request->desc]);
-        return view('postlist');
+        return view('createPost');
     }
 
     /**
@@ -37,8 +36,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $posts=DB::table('_post')->insert(['title'=>$request->post,'decs'=>$request->desc]);
+         return redirect()->route('posts.index');
+        
+     }
 
     /**
      * Display the specified resource.
@@ -59,7 +60,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $posts = DB::table('_post')->where('id',$id)->first();
+        return view('edit',compact('posts'));
     }
 
     /**
@@ -71,7 +73,8 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $flag = DB::table('_post')->where('id',$id)->update(['title'=>$request->post,'decs'=>$request->desc]);
+        return redirect()->route('posts.index');
     }
 
     /**

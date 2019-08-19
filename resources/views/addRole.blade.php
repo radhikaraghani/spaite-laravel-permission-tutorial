@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="/posts" method="post">
+<form action="" method="">
 {{csrf_field()}}
 <div class="container">
     <div class="row justify-content-center">
@@ -16,15 +16,11 @@
                             
 
                             <div class="col-md-12">
-                                <input id="post" type="" class="form-control" name="post" >
+                                <input id="role" type="" class="form-control" name="role" >
 
                             </div>
                             <br/><br/>
-                            <div class="col-md-12">
-                                <!-- <input  id="dec" type="multiline" class="form-control " name="dec" > -->
-                                <textarea name="desc" id="" cols="92" rows="10"> </textarea>
-
-                            </div><br><br>
+                            
                             <div>
                                 <button >Submit</button>
                             </div>
